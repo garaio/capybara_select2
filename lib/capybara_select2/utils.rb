@@ -29,7 +29,7 @@ module CapybaraSelect2
       else
         # GARAIO-specific: this will first check for a match within the ancestors of the found label
         # called `composite input` in our own implementation of select2_custom
-        label = page.find(:css, "label:not(.select2-offscreen)", text: options[:from])
+        label = page.find(:css, "label:not(.select2-offscreen)", text: options[:from], exact_text: options[:exact_text])
         label.all(:xpath, "./ancestor::div[contains(concat(' ', normalize-space(@class), ' '), ' input ')]").first ||
         label
           .find(:xpath, '..')
